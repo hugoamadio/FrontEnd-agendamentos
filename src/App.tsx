@@ -1,14 +1,16 @@
-import GlobalStyled from "./configs/GlobalStyled"
-import AppRoutes from "./routes/AppRoutes"
+import GlobalStyled from "./configs/GlobalStyled";
+import ThemeDefault from "./configs/themes/ThemeDefault";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
-
   return (
     <>
-      <AppRoutes/>
-      <GlobalStyled/>
+      <ThemeDefault>
+        <AppRoutes />
+        <GlobalStyled />
+      </ThemeDefault>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
