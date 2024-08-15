@@ -12,6 +12,9 @@ const GlobalStyled = createGlobalStyle`
     display: none;
     }
 
+    #root{
+        width: 100%;
+    }
 
 `;
 

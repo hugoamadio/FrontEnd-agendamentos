@@ -13,6 +13,10 @@ export const FirstBlockStyled = styled.div`
   flex-wrap: wrap;
   padding: 0px 230px;
   text-align: center;
+
+  @media(max-width: 700px){
+    padding: 20px 30px;
+  }
 `;
 
 export const SecondBlockStyled = styled.div`
@@ -25,4 +29,8 @@ export const SecondBlockStyled = styled.div`
   max-height: 530px;
   background-color: ${(props) => props.theme.colors.background};
   padding-right: 200px;
+  
+  @media(max-width: 700px){
+    padding-right: 0px;
+  }
 `;
