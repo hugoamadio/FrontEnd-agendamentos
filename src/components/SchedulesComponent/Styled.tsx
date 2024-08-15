@@ -5,15 +5,13 @@ export const FirstBlockStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   min-height: 350px;
   max-height: 530px;
   background-color: ${(props) => props.theme.colors.background};
   color: ${(props) => props.theme.colors.secondary};
   flex-wrap: wrap;
-  font-size: 50px;
-  font-weight: 600;
-  padding: 0px 155px;
+  padding: 0px 230px;
   text-align: center;
 `;
 
@@ -22,8 +20,9 @@ export const SecondBlockStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   min-height: 350px;
   max-height: 530px;
-  background-color: ${(props) => props.theme.colors.background}
+  background-color: ${(props) => props.theme.colors.background};
+  padding-right: 200px;
 `;

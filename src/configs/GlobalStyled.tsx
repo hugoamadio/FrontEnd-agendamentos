@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyled = createGlobalStyle`
     *{
@@ -7,6 +7,12 @@ const GlobalStyled = createGlobalStyle`
         border: 0px;
         font-family: 'Poppins', sans-serif, Courier, monospace;
     }
-`
 
-export default GlobalStyled
+    ul[aria-label="Select minutes"] {
+    display: none;
+    }
+
+
+`;
+
+export default GlobalStyled;

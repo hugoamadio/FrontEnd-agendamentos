@@ -1,3 +1,4 @@
+import LocalizationProviderComponent from "./components/LocalizationProviderComponent";
 import GlobalStyled from "./configs/GlobalStyled";
 import ThemeDefault from "./configs/themes/ThemeDefault";
 import AppRoutes from "./routes/AppRoutes";
@@ -5,10 +6,12 @@ import AppRoutes from "./routes/AppRoutes";
 function App() {
   return (
     <>
-      <ThemeDefault>
-        <AppRoutes />
-        <GlobalStyled />
-      </ThemeDefault>
+      <LocalizationProviderComponent>
+        <ThemeDefault>
+          <AppRoutes />
+          <GlobalStyled />
+        </ThemeDefault>
+      </LocalizationProviderComponent>
     </>
   );
 }
