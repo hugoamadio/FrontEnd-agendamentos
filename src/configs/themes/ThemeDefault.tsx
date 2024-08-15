@@ -9,7 +9,7 @@ const theme = {
     background: "#e1b866"
   },
   border: {
-    default: "1px solid #000000b4",
+    default: "1px solid #00000046",
     hover: "1px solid #000",
   },
 };

@@ -4,6 +4,7 @@ import TrendingFlatIcon from '@mui/icons-material/TrendingFlat';
 
 
 function Home(){
+
     return (
         <>
             <SchedulesComponent>
@@ -11,6 +12,7 @@ function Home(){
                 <p>Escolha um horário e um de nossos especialistas irá entrar em contato.</p>
                 <TrendingFlatIcon fontSize='large'/>
             </SchedulesComponent>
+
         </>
     )
 }
