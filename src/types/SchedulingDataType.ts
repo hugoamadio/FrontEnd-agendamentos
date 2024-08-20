@@ -3,6 +3,7 @@ interface SchedulingDataType{
     email: string;
     phone:string;
     datatime: string;
+    past?: boolean;
 }
 
 export default SchedulingDataType

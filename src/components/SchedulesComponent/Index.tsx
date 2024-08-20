@@ -6,7 +6,7 @@ import dayjs, { Dayjs } from "dayjs";
 import db from "../../database/axios.instance";
 import OverleyDefault from "../OverleyDefault/Index";
 import ModalDefault from "../ModalDefault/Index";
-import SchedulingDataType from "../../types/SchedulingData";
+import SchedulingDataType from "../../types/SchedulingDataType";
 
 interface SchedulesComponentProps {
   children: ReactNode;
@@ -80,7 +80,7 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
     }
   }
 
-    // Desabilita horas que a empresa não atende
+  // Desabilita horas que a empresa não atende
   const shouldDisableTime = (value: Dayjs, view: TimeView) => {
     if (view === "hours") {
       const hour = value.hour();
@@ -176,7 +176,7 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
             modalTitle={modalTitle}
             modalContent={modalContent}
             closeModal={() => {
-              setOverley(!overley)
+              setOverley(!overley);
             }}
           />
         </OverleyDefault>
