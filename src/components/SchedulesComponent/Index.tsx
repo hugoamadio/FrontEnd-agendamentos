@@ -7,6 +7,7 @@ import db from "../../database/axios.instance";
 import OverleyDefault from "../OverleyDefault/Index";
 import ModalDefault from "../ModalDefault/Index";
 import SchedulingDataType from "../../types/SchedulingDataType";
+import emailjs from "@emailjs/browser";
 
 interface SchedulesComponentProps {
   children: ReactNode;
@@ -62,6 +63,8 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
             "Sua consulta foi agendada! Um de nossos especialistas entrará em contato pelo WhatsApp!"
           );
           setModalBackground("#73c8a9");
+          //Enviar e-mail
+          sendEmail()
         }
       } catch (error) {
         setModalTitle("Ops, algo deu errado.");
@@ -78,6 +81,21 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
       setModalBackground("#ff9595");
       setOverley(true);
     }
+  }
+
+  async function sendEmail(){
+    const mandarEmail = await emailjs.send(
+      "service_grax0sq",
+      "template_lmcc35p",
+      {
+        email,
+        phone,
+        date,
+        time,
+      },
+      "-5sY-o2rRe2Ab03L1"
+    );
+    console.log(mandarEmail);
   }
 
   // Desabilita horas que a empresa não atende
