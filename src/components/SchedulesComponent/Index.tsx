@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { FirstBlockStyled, SecondBlockStyled } from "./Styled";
 import { DatePicker, TimePicker, TimeView } from "@mui/x-date-pickers";
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, TextField } from "@mui/material";
 import dayjs, { Dayjs } from "dayjs";
 import db from "../../database/axios.instance";
 import OverleyDefault from "../OverleyDefault/Index";
@@ -24,6 +24,8 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
   const [modalContent, setModalContent] = useState<string>("");
   const [modalBackground, setModalBackground] = useState<string>("");
   const [scheduledDataTimes, setScheduledDataTimes] = useState<Dayjs[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [reRender, setRerender] = useState<boolean>(false);
 
   useEffect(() => {
     async function seekDatatime() {
@@ -47,6 +49,7 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
         .set("minute", time.minute());
 
       try {
+        setLoading(true)
         const response = await db.post("/scheduling", {
           email,
           phone,
@@ -64,14 +67,16 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
           );
           setModalBackground("#73c8a9");
           //Enviar e-mail
-          sendEmail()
+          sendEmail();
         }
+        setLoading(false)
       } catch (error) {
         setModalTitle("Ops, algo deu errado.");
         setModalContent(
           "Ocorreu um erro ao tentar agendar sua consulta. Por favor, tente novamente mais tarde ou entre em contato pelo WhatsApp (19)97883-4390"
         );
         setModalBackground("#ff9595");
+        setLoading(false)
       } finally {
         setOverley(true);
       }
@@ -81,9 +86,10 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
       setModalBackground("#ff9595");
       setOverley(true);
     }
+    setRerender(!reRender)
   }
 
-  async function sendEmail(){
+  async function sendEmail() {
     const mandarEmail = await emailjs.send(
       "service_grax0sq",
       "template_lmcc35p",
@@ -177,14 +183,18 @@ function SchedulesComponent({ children }: SchedulesComponentProps) {
           onChange={(newTime) => setTime(newTime)}
         />
 
-        <Button
-          variant="contained"
-          color="success"
-          size="large"
-          onClick={handleClick}
-        >
-          Agendar
-        </Button>
+        {loading ? (
+          <CircularProgress color="primary" />
+        ) : (
+          <Button
+            variant="contained"
+            color="success"
+            size="large"
+            onClick={handleClick}
+          >
+            Agendar
+          </Button>
+        )}
       </SecondBlockStyled>
 
       {overley && (
